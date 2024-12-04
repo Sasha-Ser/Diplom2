@@ -9,9 +9,8 @@ class TestLoginUser:
     def test_autorization_user_success(self, user_authorization):
         UserMethods.create_user(Data.USER_REGISTER)
         status_code, response_context, token_auth = UserMethods.login_user(Data.USER_REGISTER)
-        expected_response_text = f'"email":"{Data.USER_REGISTER['email']}","name":"{Data.USER_REGISTER['name']}"'
         assert status_code == 200
-        assert expected_response_text in response_context
+        assert Data.RESPONSE_TEXT_CREATE_USER_SUCCESS in response_context
 
     @allure.title('Проверка неуспешной авторизации с невалидными данными')
     @pytest.mark.parametrize("user_data", [
@@ -23,8 +22,7 @@ class TestLoginUser:
     def test_autorization_user_fail(self, user_data, user_authorization):
         UserMethods.create_user(Data.USER_REGISTER)
         status_code, response_context, token_auth = UserMethods.login_user(user_data)
-        expected_response_text = '{"success":false,"message":"email or password are incorrect"}'
         assert status_code == 401
-        assert expected_response_text == response_context
+        assert Data.RESPONSE_TEXT_INCORRECT_PASS_OR_EMAIL == response_context
 
         

@@ -84,3 +84,11 @@ class Data:
         "ingredients": ["61c0c5a71d1f82001bdaaa6d", "61c0c5a71d1f82001bdaaa6f", "61c0c5a71d182001bdaaa72"]
     }
 
+    RESPONSE_TEXT_SUCCESS = '"success":true'
+    RESPONSE_TEXT_FALSE_FOR_INGREDIENT = '{"success":false,"message":"Ingredient ids must be provided"}'
+    RESPONSE_TEXT_SERVER_ERROR = 'Internal Server Error'
+    RESPONSE_TEXT_CREATE_USER_SUCCESS= f'"email":"{USER_REGISTER['email']}","name":"{USER_REGISTER['name']}"'
+    RESPONSE_TEXT_EXISTING_USER = '{"success":false,"message":"User already exists"}'
+    RESPONSE_TEXT_WITHOUT_REQUIRED_FIELD = '{"success":false,"message":"Email, password and name are required fields"}'
+    RESPONSE_TEXT_INCORRECT_PASS_OR_EMAIL = '{"success":false,"message":"email or password are incorrect"}'
+    RESPONSE_TEXT_MANDATORY_REGISTRATION = '{"success":false,"message":"You should be authorised"}'

@@ -12,7 +12,7 @@ class TestGetListOrders:
         UserMethods.create_user(Data.USER_REGISTER)
         status_code, response_context = OrderMethods.get_all_orders_without_authorization()
         assert status_code == 401
-        assert '{"success":false,"message":"You should be authorised"}' in response_context
+        assert Data.RESPONSE_TEXT_MANDATORY_REGISTRATION in response_context
 
     @allure.title('Проверка получения списка заказов после авторизации')
     def test_get_list_order_with_auth_success(self, user_authorization):
@@ -20,6 +20,5 @@ class TestGetListOrders:
         status_code, response_context, token_auth = UserMethods.login_user(Data.USER_REGISTER)
         OrderMethods.create_order_with_authorization(Data.FULL_BURGER, token_auth)
         status_code, response_context = OrderMethods.get_all_orders_with_authorization(token_auth)
-        success_true = '"success":true'
         assert status_code == 200
-        assert success_true in response_context
+        assert Data.RESPONSE_TEXT_SUCCESS in response_context
